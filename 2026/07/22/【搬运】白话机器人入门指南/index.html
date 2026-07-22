@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>白话机器人入门指南 | Weaver's Website</title><meta name="author" content="Weaver"><meta name="copyright" content="Weaver"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="0 这是什么 机器人是一门有趣的学科，亲手实践并制作出一个能够按照你指令行动的机械，是一件非常有成就感的事情。如果你也有兴趣从头开始搭建一个机器人，这份指南可以帮你开个头。 对于刚开始接触机器人的人来说，这的确是一个庞杂的世界，涉及软件、机械、电子和项目管理，每一项都充满挑战。我也曾从什么都不懂的阶段走过，所以写了这份指南，希望能帮助那些有兴趣进入机器人世界的人。 本指南是一个简介，遵循自上而下的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="白话机器人入门指南">
+<meta property="og:url" content="https://zju-weaver.top/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Weaver&#39;s Website">
+<meta property="og:description" content="0 这是什么 机器人是一门有趣的学科，亲手实践并制作出一个能够按照你指令行动的机械，是一件非常有成就感的事情。如果你也有兴趣从头开始搭建一个机器人，这份指南可以帮你开个头。 对于刚开始接触机器人的人来说，这的确是一个庞杂的世界，涉及软件、机械、电子和项目管理，每一项都充满挑战。我也曾从什么都不懂的阶段走过，所以写了这份指南，希望能帮助那些有兴趣进入机器人世界的人。 本指南是一个简介，遵循自上而下的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp">
+<meta property="article:published_time" content="2026-07-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-22T08:19:17.972Z">
+<meta property="article:author" content="Weaver">
+<meta property="article:tag" content="入门">
+<meta property="article:tag" content="指南">
+<meta property="article:tag" content="搬运">
+<meta property="article:tag" content="机器人">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "白话机器人入门指南",
+  "url": "https://zju-weaver.top/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/",
+  "image": "https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp",
+  "datePublished": "2026-07-21T16:00:00.000Z",
+  "dateModified": "2026-07-22T08:19:17.972Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Weaver",
+      "url": "https://zju-weaver.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zju-weaver.top/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '白话机器人入门指南',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="referrer" content="no-referrer"><style>#footer{min-height:240px;display:flex;flex-direction:column;justify-content:center}</style><meta name="generator" content="Hexo 8.1.2"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(https://gitee.com/juncer2021/img-bed/raw/master/images/background.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/juncer2021/img-bed/raw/master/images/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/canteen/"><i class="fa-fw fas fa-dice"></i><span> 今天吃什么</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/talks/"><i class="fa-fw fas fa-comments"></i><span> 说说</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Weaver's Website</span></a><a class="nav-page-title" href="/"><span class="site-name">白话机器人入门指南</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/canteen/"><i class="fa-fw fas fa-dice"></i><span> 今天吃什么</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/talks/"><i class="fa-fw fas fa-comments"></i><span> 说说</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">白话机器人入门指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-21T16:00:00.000Z" title="发表于 2026-07-22 00:00:00">2026-07-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-22T08:19:17.972Z" title="更新于 2026-07-22 16:19:17">2026-07-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="0-这是什么">0 这是什么</h2>
+<p>机器人是一门有趣的学科，亲手实践并制作出一个能够按照你指令行动的机械，是一件非常有成就感的事情。如果你也有兴趣从头开始搭建一个机器人，这份指南可以帮你开个头。</p>
+<p>对于刚开始接触机器人的人来说，这的确是一个庞杂的世界，涉及软件、机械、电子和项目管理，每一项都充满挑战。我也曾从什么都不懂的阶段走过，所以写了这份指南，希望能帮助那些有兴趣进入机器人世界的人。</p>
+<p>本指南是一个简介，遵循自上而下的方式介绍机器人。我觉得这种方式对大多数人来说更自然，更符合直觉。</p>
+<p>看完指南后，你会在脑海中有个大概的框架，知道哪些知识是重要的，哪些是细枝末节。然后可以根据自己的兴趣和时间安排具体的学习。</p>
+<h2 id="1-这不是什么">1 这不是什么</h2>
+<p>这不是一份具体的学习指南，比如如何学习线性代数，如何学编程。不过，我会附上一些我曾经使用过的、觉得好用的链接和书籍供你参考。</p>
+<p>这也不是魔法书，看完后你不会突然获得从头制作四旋翼飞行器、机械臂或扫地机器人的能力。这些都需要长时间的学习和实践，来获得必要的知识和经验。</p>
+<h2 id="2-需要什么">2 需要什么</h2>
+<p>机器人所涉及的大部分知识都已在很大程度上开源，所以只要你有时间，总能学会。</p>
+<p>当然我相信有一些方法可以帮你更好地学习</p>
+<ol>
+<li>
+<p><strong>学习的方法</strong>：机器人所需的知识非常多，因此劳逸结合、高效学习是很重要的一步。Learning How to Learn 是一个免费的公开课，推荐你去学习。</p>
+</li>
+<li>
+<p><strong>模块化的思维</strong>：也可以称为建模、抽象的思维。机器人涉及的知识面非常广，如何简化复杂的事物以减轻大脑负担呢？关键就在于模块化。举个例子，如果你在控制一个复合机器人，运动时既要考虑底盘的运动又要控制机械臂，系统非常复杂。那么我们可以：</p>
+<p>注意，每次封装后，抽象的层级就高了一层，你就不再需要考虑低层的实现（只要你实现正确）。通过不断地模块化，细节的复杂度逐渐被隐藏，你可以专注于更高层次的问题。</p>
+<ol>
+<li>将电机的转速控制封装成一个模块，外界只需要输入一个速度指令，电机就能达到想要的速度</li>
+<li>底盘的移动方式封装成一个模块，外界只需输入前进、后退、转向等指令，底盘就能相应运动。</li>
+<li>将底盘的移动整体封装一个模块，外界只需要输入目标位置，底盘就能移动到相应的位置</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-机器人是什么">3 机器人是什么</h2>
+<p>简单来说，机器人就是一个控制硬件按预定目的动作的系统，所以它需要：</p>
+<ul>
+<li>
+<p><strong>机械</strong>：用来执行动作的硬件，如移动底盘、四轴飞行器、机械臂等。这些硬件使我们能够与物理世界交互并改变它，就像人的肌肉。</p>
+<ul>
+<li>实际上是：各种物理材料，通常是刚体，上面有孔，能与电气系统连接。</li>
+<li>你需要做的：根据机器人的目的设计结构，确定哪些部位需要什么形状、材料特性，在什么地方打孔，用什么连接方式。有些材料可以直接购买（如轮胎、螺母螺丝等），有些则需要你自己画图加工（一般画CAD图，交给加工厂加工）。</li>
+</ul>
+</li>
+<li>
+<p><strong>电气</strong>：包括电路、电机等组件。在当今的高度电子化世界中，电子系统能让机械动起来，通过传感器，机器人能够感知这个世界，就像人的神经系统和感受器。</p>
+<ul>
+<li>实际上是：电机、传感器（超声波、相机，红外），电池，电路板，电线，控制器</li>
+<li>你需要做的：根据机器人的功能需求，确定需要控制哪些部位及其性能，并在价格、大小、功耗和性能之间权衡取舍。例如，最大力矩大的电机往往功耗较大、体积较大、价格更高，你需要根据机器人的最大负载进行选择。</li>
+</ul>
+</li>
+<li>
+<p><strong>控制</strong>：大多数机器人都有一个明确的目的，为实现这个目的，逻辑控制是必须的，它决定机器人在不同情况下如何行动，就像人的大脑</p>
+<ul>
+<li>实际上是：或长或短的代码，运行在控制器或电路板上（如C语言），或更高性能的计算平台上（如C++、Python）。</li>
+<li>你需要做的：逐级实现模块化控制，比如先控制电机转速，再控制轮胎速度，然后控制底盘的运动方式（前驱、后驱、差速等），接着是定位（知道自己的位置），再到导航（如何从A点到B点）。这些都需要复杂的算法来实现。</li>
+</ul>
+</li>
+</ul>
+<p>你可能已经发现，这三者紧密相关：电气限制机械的运动能力，机械和电气的设计又影响算法的可实现性，算法也影响传感器的布局，而传感器的位置反过来影响机械的设计等。因此，要实现一个高效的机器人系统，必然是一个不断迭代的过程，即使你经验丰富，也需要根据实际情况不断调整。</p>
+<h2 id="4-需要学什么">4 需要学什么</h2>
+<p>像ChatGPT这样的工具极大地扩展了我们的能力，许多零碎的知识可以即学即用。但是，要判断它给出的建议的合理性，仍然需要一定的基础知识。我列出了一些基础知识和较难掌握的知识，从四个方向入手：</p>
+<ul>
+<li>
+<p>机械</p>
+<ul>
+<li><strong>CAD</strong>画图：需要将你的想法转变为实际设计，即使只是复制别人的创作，也需要将实物转化为设计图。SolidWorks是比较常用的工具</li>
+<li><strong>基本的物理学</strong>（尤其是力学）：如果只是玩具机器人，可能不需要太多考虑，一方面负载小，普通材料足够，另一方面可以不计成本地使用更好的材料和电机。但一旦需要机器人承担实际工作，比如拾取物体、爬坡、负载且控制成本，就需要你分析如何在满足要求的情况下尽量使用&quot;够用&quot;的材料。</li>
+<li><strong>机器人学</strong>：传统的机器人学分为运动学和动力学。运动学描述的是相互连接的刚体之间如何影响对方的位置关系，例如通过DH参数求得机械臂末端的运动，或通过轮子位置求得差速底盘的速度。而动力学涉及阻力、重量和动力之间的关系，更为复杂。Robotics, Vision and Control机器人学有不同的流派，采用的符号也会有所不同，初期在还没搞懂之前建议只专注于一本书，避免混淆，这本Peter Croke的书涉及了机器人学的很多方面，是一本很好的教材</li>
+</ul>
+</li>
+<li>
+<p>电气：大多数情况下，电气设备可以通过购买获取，市面上有从低级到高级的各种电子设备。</p>
+<ul>
+<li><strong>数字电路</strong>：微处理器和控制器都基于数字电路，虽然大部分时候你可以购买集成好的设备，但在需要定制控制或集成时，你需要设计电路板，将电源、控制器、传感器等的电路结合在一起，而不是使用多个分散的电路板（当然，在制作原型时没有问题）。MIT的公开课深入浅出，介绍得很好，尤其是第一节课的导论提纲挈领，值得反复学习</li>
+<li><strong>电机</strong>：电机是机器人执行动作的核心之一。你需要了解电机的种类（如直流电机、步进电机和伺服电机）、它们的特点以及如何选择，不过这些可以在具体需要时再学，不会花太长时间。</li>
+<li><strong>传感器</strong>：基本上你需要什么样的信息，就去购买什么样的传感器。有些信息可以直接从传感器读取（如温度、速度、加速度），有些则需要通过算法从已知信息中计算（如当前位置、障碍物识别等）。</li>
+</ul>
+</li>
+<li>
+<p>控制</p>
+<ul>
+<li><strong>编程语言</strong>：C++和Python是最常用的两种语言。C++性能最佳，很多开源机器人算法都是用C++实现的。而Python适合高层算法，底层部分可以通过调用库或者C++代码来实现，从而以小部分性能的损失换取更高的灵活性。Learn Modern C++学习现代C++的语法，起码学习C++11；Dive Into Python 3简短的Python介绍，一个晚上就可以看完</li>
+<li><strong>数据结构、算法</strong>：如果你只调用别人的库，这部分的重要性不太明显。但当你自己实现复杂数据处理时，合适的数据结构和算法能够大幅提高机器人处理频率。例如，障碍物检测每秒钟处理的图像数量可以从10张提高到60张，这就是性能的实际提升。CS50哈佛的公开课，可以说是计算机科学的导论课，也涉及到了数据机构和算法</li>
+<li><strong>具体算法</strong>：障碍物检测、路径规划、避障等算法通常与机器人本身关系不大，只是用于实际问题中的解决方案而已。大部分都有现成的库和代码可以使用，通常你需要根据自己的需求对开源代码做相应修改。算法的复杂程度可能会非常复杂，要钻研的话每个算法都可以当成一个单独的科目去研究。Robotics, Vision and Control是Peter Croke的经典，写的很好，还提供了几乎所有经典算法的Matlab实现；PythonRobotics一个开源的机器人算法库，都是纯Python实现，还会有可视化，值得学习。</li>
+</ul>
+</li>
+<li>
+<p><strong>编程语言、数据结构、算法设计</strong>：编程可以说是机器人最为重要的一部分。有了机械和电气，机器人能够动起来，但它究竟能做什么，全靠代码来实现。</p>
+</li>
+<li>
+<p><strong>Linux系统、ROS</strong>：大多数机器人算法都运行在Linux系统上，因为配置环境更方便，且部署到开发板和远程控制更容易。你需要习惯用命令行与计算机交互。ROS（机器人操作系统）集成了大量的机器人库，很多算法在发布时都会提供ROS接口。The Linux Command Line只看前6章基本就够了，可以明白Linux的基本工作原理和操作；ROS Tutorial跟着官方的教程做一遍基本上就掌握ROS的使用了，ROS只是一个平台，在遇到极限之前不用过度深究。</p>
+</li>
+<li>
+<p><strong>控制原理</strong>：最常用的控制原理是PID控制，这在很多领域都有应用。理解控制的哲学思想尤为重要，首先要知道自己要控制什么，能控制什么，这两者之间有什么关系，然后再套用具体算法进行控制。Brian Douglas一个Youtube Channel, 用人话介绍控制原理</p>
+</li>
+<li>
+<p><strong>数学</strong>：机器人控制、传感器处理、路径规划等各个方面都涉及大量的数学知识。以下是一些关键领域：</p>
+<ul>
+<li><strong>线性代数</strong>：线性代数是机器人学的基础之一，特别是在描述空间中的变换、姿态表示（如旋转矩阵和四元数）以及多关节机械臂的位置计算中有广泛应用，学习线性代数对于很多机器人的其他相关课题也很重要，比如说计算机视觉、机器学习等，在现代，可以说高效的算法最后都是变成了矩阵运算，因此理解线性代数的计算非常重要，尤其是其代表的含义，将运算理解为坐标系和坐标的几何变化在初期会有很大帮助。3Blue1Brown一个将矩阵运算都可视化了的视频博客，质量非常高，看完之后会对线性代数有更深的认识。</li>
+<li><strong>微积分</strong>：微积分对于理解运动学和动力学非常重要，尤其是涉及速度、加速度和力的变化时。例如，在路径规划和控制过程中，积分和微分运算常用于描述和预测机器人的状态变化，主要是用于推导机械和运动之间的关系，比如在四轮车模型中，车的速度和各个轮胎的速度之间的关系，就需要微积分来推导</li>
+<li><strong>概率与统计</strong>：在传感器数据处理中，尤其是涉及不确定性和噪声时，概率和统计是必不可少的工具。例如，使用卡尔曼滤波或粒子滤波来进行机器人定位和状态估计。</li>
+<li><strong>优化理论</strong>：机器人中的很多问题都可以看作是一个优化问题，例如最优路径规划、运动控制中的能耗最小化等。学习基本的优化方法（如梯度下降）有助于解决这些问题。</li>
+<li><strong>数值分析</strong>：许多机器人算法涉及大量数值计算，了解数值分析的方法和误差控制可以帮助你确保机器人系统的稳定性和准确性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-保持学习">5 保持学习</h2>
+<p>机器人学科博大精深，上述只是一个基础框架。有了这个框架，你可以在实践中不断扩展和深化自己的知识，只要深究，总能学到新东西，乐趣无穷！</p>
+<p>原作者：胡钧涵<br>
+<img src="https://gitee.com/Juncer2021/img-bed/raw/master/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2026-07-22_161746_534.webp" alt="微信图片_2026-07-22_161746_534.webp|250"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zju-weaver.top">Weaver</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zju-weaver.top/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">https://zju-weaver.top/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zju-weaver.top" target="_blank">Weaver's Website</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/">机器人</a><a class="post-meta__tags" href="/tags/%E5%85%A5%E9%97%A8/">入门</a><a class="post-meta__tags" href="/tags/%E6%8C%87%E5%8D%97/">指南</a><a class="post-meta__tags" href="/tags/%E6%90%AC%E8%BF%90/">搬运</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2026/07/08/Hexo%20+%20Butterfly%20%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/" title="Hexo + Butterfly 个人网站搭建全记录"><img class="cover" src="https://gitee.com/Juncer2021/img-bed/raw/master/images/jianzhan.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hexo + Butterfly 个人网站搭建全记录</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/juncer2021/img-bed/raw/master/images/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Weaver</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Juncer2021"><i class="fab fa-github"></i><span>Follow My Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">0 这是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%99%E4%B8%8D%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text">1 这不是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%9C%80%E8%A6%81%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">2 需要什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">4.</span> <span class="toc-text">3 机器人是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%9C%80%E8%A6%81%E5%AD%A6%E4%BB%80%E4%B9%88"><span class="toc-number">5.</span> <span class="toc-text">4 需要学什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BF%9D%E6%8C%81%E5%AD%A6%E4%B9%A0"><span class="toc-number">6.</span> <span class="toc-text">5 保持学习</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" title="白话机器人入门指南"><img src="https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="白话机器人入门指南"/></a><div class="content"><a class="title" href="/2026/07/22/%E3%80%90%E6%90%AC%E8%BF%90%E3%80%91%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" title="白话机器人入门指南">白话机器人入门指南</a><time datetime="2026-07-21T16:00:00.000Z" title="发表于 2026-07-22 00:00:00">2026-07-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/07/08/Hexo%20+%20Butterfly%20%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/" title="Hexo + Butterfly 个人网站搭建全记录"><img src="https://gitee.com/Juncer2021/img-bed/raw/master/images/jianzhan.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo + Butterfly 个人网站搭建全记录"/></a><div class="content"><a class="title" href="/2026/07/08/Hexo%20+%20Butterfly%20%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/" title="Hexo + Butterfly 个人网站搭建全记录">Hexo + Butterfly 个人网站搭建全记录</a><time datetime="2026-07-08T12:00:00.000Z" title="发表于 2026-07-08 20:00:00">2026-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/07/06/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/" title="写在前面"><img src="https://gitee.com/juncer2021/img-bed/raw/master/images/defualtcover.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="写在前面"/></a><div class="content"><a class="title" href="/2026/07/06/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/" title="写在前面">写在前面</a><time datetime="2026-07-05T16:00:00.000Z" title="发表于 2026-07-06 00:00:00">2026-07-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/juncer2021/img-bed/raw/master/images/footer.webp);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Weaver</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
